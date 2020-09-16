@@ -1,0 +1,13 @@
+//- 주석(comment)
+//- 주석때문에 pug파일이 html로 변환되는 과정에서
+//- 문제를 일으킬때가 잇다
+//- layot.pug파일은 개발자가 직접 open을 하거나 핸들링하는 경우 많지 않다
+//- 공통적으로 설정되는 header, link 등을 적성해 두면
+//- 다른 pug파일을 redering할때 같이 묶어서 rendering 을 수행할
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content

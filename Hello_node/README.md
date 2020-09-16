@@ -14,3 +14,13 @@
 3. npm install pug : view 단으 도구 설치
 4. view 폴더의 파일들 \*.pug로 이름변경
 5. app.js 파일에서 jade를 pug로 변경
+
+## pug view
+
+1. 전통적인 html 코딩이 아닌 새로운 문법구조로 만드는 view파일
+2. html과 달리 tag가 열리기만 하고 닫히는 tag가 없다.
+3. 각 tag의 시작은 왼쪽정렬로 정확히 구조가 일치해야 한다.
+4. tag에 tag를 포함할때는 포함되는 tag의 앞에 tab을 추가해 주어야 한다.
+5. pug nodejs에 의해서 reansfiler가 되고 실제로는 html코드로
+만들어져서 client에 전송된다.
+6. nodejs에 설치한 pug 모듈에 의해서 파일이 변환된다.

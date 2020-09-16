@@ -1,3 +1,9 @@
+/**
+ * nodejs에서 기본으로 제공하는 모듈
+ * 필요에 따라 npm install 을 한 모듈
+ * 이러한 모듈을 사용하기 위해서 require()를 이용하여
+ */
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,34 +14,27 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
 
-// nodejs서버 생성자
 var app = express();
 
 // view engine setup
-// __dirname : nodejs 우ㅢ  현재 시스템 폴더
-//  임의로 설정하지 않아도 이미 만ㄷ,ㄹ어져서 제공되는 변수
-// __main___ 
-// c:/bizwork/workspace/nodejs/Hello_node
-// __dirname에 저장된 문자열과 view
 app.set('views', path.join(__dirname, 'views'));
-// view파일 참조 views/*.pug라는 파일을 찾아서 rander
 app.set('view engine', 'pug');
 
+// 어떤 모듈을 사용하기 위하여 import를 수행한 후 
+// 서버에 모듈을 연결하는 절차가 필요하다.
+// express서버는 app.use() 라는 함수를 사용하여
+// 서버에서 import한 모듈을 사용할수 있도록 설정한다.
+// 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// resources 폴더처럼
-// controller를 거치지 않고 직접 핸들링할 파일들을 
-// 저장하는 곳
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// localhost:3000/home/* 의
 app.use('/home', homeRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

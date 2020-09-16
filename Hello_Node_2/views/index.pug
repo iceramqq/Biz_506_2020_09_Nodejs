@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  //- randering을 수행할때 변수를 취급하기
+  //- tag= 변수명 :
+  h1 !{title}
+  p Welcome to !{title}
+  ul
+    li
+      a(href="/home") 홈으로
+    li
+      a(href="/home/my") mypage
+    li
+      a(href="/home/input?nation=korea") query
+    li
+      a(href="/home/input/korea") params
+
+  form(method="POST" action="/home/input")
+    input(type="text",name="m_user")
+    button 전송

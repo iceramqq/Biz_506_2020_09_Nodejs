@@ -1,3 +1,9 @@
+/**
+ * router : 경로설정
+ * spring : controller 클래스로 선언
+ * spring에서 controller가 하는일과 유샇나 기능을 수행한다
+ */
+
 var express = require('express');
 var router = express.Router();
 
@@ -13,7 +19,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: '대한민국' });
 });
 
-router.get("/home",function(req, res){
+router.get("/home/index",function(req, res){
   res.send("우리나라 만세")
 });
 
