@@ -4,17 +4,22 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-// nodejs와 mongoDB를 연동하기 위해 mongoose 모듈을 import
+// nodej와 mongoDB를 연동하기 위해 mongoose 모듈을 import
 var mongoose = require("mongoose");
 // db연결 객체 생성
 var dbConn = mongoose.connection;
-//
-//
-//
-// mongoose를 통하여 db에
+
+// id이름이 설정된 tag를 클릭했을때 수행할 event핸들링
+// $("#id").on(click,function())
+// $("#id").click(function())
+// mongoose를 통하여 db에 연결을 시도했을때 정상으로 open이 되면
+// db open이 성공하면 console 메시지를 보여라,
 dbConn.once("open", function () {
   console.log("MongoDB Open OK");
 });
+
+// db와 연결하여 CRUD를 수행하는 과정에서
+// 오류가 발생을하면 그 오류메시지를 console에 표시하라
 dbConn.on("error", function (error) {
   console.err(error);
 });
@@ -27,6 +32,7 @@ mongoose.connect("mongodb://localhost/mybbs", {
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+// bbsRouter.js 를 import
 var bbsRouter = require("./routes/bbsRoute");
 
 var app = express();
@@ -43,6 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+// localhost:3000/bbs/* 요청하면 bbsRouter로 전달
 app.use("/bbs", bbsRouter);
 
 // catch 404 and forward to error handler

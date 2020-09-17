@@ -12,16 +12,16 @@ block content
                 th 제목
                 th 조회수
             each vo,index in bbsList
-                tr(data-id = vo._id)
-                    td #{index+1}
+                //- U(Update) D(Delete) 기능을 구현하기 위해서
+                //- PK키 값을 tr tag 에 data-id라는 속성값으로 추가하여
+                //- 참조할수 있도록 미리 코드를 만들어둔다
+                tr(data-id= vo._id)
+                    td #{ index + 1 }
                     td= vo.b_date
                     td= vo.b_time
                     td= vo.b_write
                     td
-                        a(href="/bbs/view/"+vo._id)=vo.b_title
+                        a(href="/bbs/view/" + vo._id)= vo.b_title
                     td= vo.b_count
-
-
-
-        p 
+        p
             a(href="/bbs/write") 새로작성
