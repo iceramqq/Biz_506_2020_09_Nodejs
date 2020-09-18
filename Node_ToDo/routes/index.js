@@ -37,8 +37,39 @@ router.post("/", function (req, res) {
   req.body.to_date = to_date;
   req.body.to_time = to_time;
 
+  // ... : 전개연산자, spread op
+  // req.body 에 저장된 json 데이터를
+  //    {todo:"데이터",to}
+  // 이 데이터를 통째로 구조까지
+  let todo_data = { ...req.body };
+
+  console.log(todo_data);
   // res.send(todo);
-  res.json(req.body);
+  // res.json(req.body);
+  // JSON.stringify(jsonObject) : jsonObject(JSON객체) 데이터를
+  //    네트워크를 통해서 전송하기 위하여 문자열로 변환시키기
+  //    string serializing : 일련화, 나열화
+  res.render("index", { todo_data: JSON.stringify(req.body) });
+});
+
+// get("/insert") : 입력을 받기위해서
+// 사용자에게 입력 form을 보여주는 용도의 url
+router.get("/insert", function (req, res) {
+  res.render("write");
+});
+//
+//
+// write.pug의 form에 action을 지정하지 않아도 된다.
+router.post("/post", function (req, res) {
+  //
+  res.redirect("/");
+});
+router.get("/update", function (req, res) {
+  res.render("write");
+});
+router.post("/update", function (req, res) {
+  //
+  res.redirect("/");
 });
 
 module.exports = router;
