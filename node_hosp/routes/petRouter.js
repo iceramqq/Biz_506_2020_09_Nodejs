@@ -3,10 +3,7 @@ const router = express.Router();
 import request from "request";
 
 import gjDataVO from "../models/GjStation.js";
-import {
-  GJ_BUS_ARRIVE_URL,
-  DATA_GO_SEVICE_KEY,
-} from "../modules/Data.go.kr.js";
+import { PET_URL, DATA_GO_SEVICE_KEY } from "../modules/Data.go.kr.js";
 
 router.get("/", (req, res) => {
   console.log("bis root req");
