@@ -1,7 +1,15 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title 동물병원리스트
+    meta(charset='UTF-8')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
   body
-    block content
+    header
+      h1 동물병원리스트
+    section.nav
+      form(action="/pet/list")
+        input.bis-input(type="text",name="search",
+        | placeholder="동물병원 이름 입력 후 Enter...")
+    section.main
+      block content
